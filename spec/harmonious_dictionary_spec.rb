@@ -13,6 +13,11 @@ describe HarmoniousDictionary do
       it 'should return english,url and chiese words' do
         HarmoniousDictionary.harmonious_words('戴秉国 in china,watch cctv.com.let fuck it').should == ['戴秉国','fuck']
       end
+
+      it 'should check this word' do
+	HarmoniousDictionary.harmonious_words('代开普通发票是什么').should == ['代开普通发票']
+      end
+
     end
 
     it 'should find harmonious chinese  words' do
