@@ -80,7 +80,14 @@ module HarmoniousDictionary
       
       engines.each do |engine|
         next unless engine.running?
-        match, word = engine.process(char)
+
+        if engine.class == English && @english_dictionary.length == 0
+          # quick pass the case english dict was empty.
+          match = false
+          word = ""
+        else
+          match, word = engine.process(char)
+        end
         if match 
          nomatch = false
        else
