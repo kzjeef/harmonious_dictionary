@@ -78,11 +78,8 @@ module HarmoniousDictionary
       word = ''
       @english_dictionary ||= load_english_dictionary(english_yaml_path)
       
-      engines.each_with_index do |engine, index|
-        unless engine.running? || index == 0
-          engine.run
-          next
-        end
+      engines.each do |engine|
+        next unless engine.running?
         match, word = engine.process(char)
         if match 
          nomatch = false
